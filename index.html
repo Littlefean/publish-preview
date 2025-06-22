@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>发布预览器</title>
+    <link rel="stylesheet" href="index.css" />
+  </head>
+  <body>
+    <main>
+      <h2>输入视频标题</h2>
+      <input type="text" id="titleInput" />
+      <!-- 右上角动态预览 -->
+      <p>b站 动态右上角预览</p>
+      <div class="title-area bilibili-news-video-title" id="titlePreview"></div>
+      <p>b站 up主的视频主页</p>
+      <!-- 191.5 x 36 -->
+      <div
+        class="title-area bilibili-upper-video-title"
+        id="titleUperPreview"
+      ></div>
+      <p>b站 首页推荐视频</p>
+      <div
+        class="title-area bilibili-recommend-video-title"
+        id="titleRecommendPreview"
+      ></div>
+    </main>
+
+    <script>
+      const input = document.getElementById("titleInput");
+      const titleAreas = document.querySelectorAll(".title-area");
+
+      input.addEventListener("input", function () {
+        titleAreas.forEach((element) => {
+          element.textContent = input.value;
+        });
+      });
+    </script>
+  </body>
+</html>
