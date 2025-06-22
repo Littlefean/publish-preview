@@ -63,6 +63,20 @@
           </a>
         </div>
       </div>
+
+      <h2 class="text-3xl font-bold my-4">输入视频详细信息</h2>
+      <textarea
+        type="text"
+        id="detailsInput"
+        class="ring ring-red-500 my-2 w-full p-2 h-32"
+      ></textarea>
+
+      <div>
+        <p>b站视频界面视频简介</p>
+        <div class="basic-desc-info">
+          <div class="desc-info-text details-area"></div>
+        </div>
+      </div>
     </main>
 
     <script>
@@ -73,6 +87,13 @@
         titleAreas.forEach((element) => {
           element.textContent = input.value;
         });
+      });
+
+      const detailsInput = document.getElementById("detailsInput");
+      const detailsArea = document.querySelector(".details-area");
+
+      detailsInput.addEventListener("input", function () {
+        detailsArea.textContent = detailsInput.value;
       });
     </script>
   </body>
