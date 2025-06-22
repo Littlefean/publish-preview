@@ -5,25 +5,64 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>发布预览器</title>
     <link rel="stylesheet" href="index.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body>
-    <main>
-      <h2>输入视频标题</h2>
-      <input type="text" id="titleInput" />
-      <!-- 右上角动态预览 -->
-      <p>b站 动态右上角预览</p>
-      <div class="title-area bilibili-news-video-title" id="titlePreview"></div>
-      <p>b站 up主的视频主页</p>
-      <!-- 191.5 x 36 -->
-      <div
-        class="title-area bilibili-upper-video-title"
-        id="titleUperPreview"
-      ></div>
-      <p>b站 首页推荐视频</p>
-      <div
-        class="title-area bilibili-recommend-video-title"
-        id="titleRecommendPreview"
-      ></div>
+    <main class="">
+      <h2 class="text-3xl font-bold my-4">输入视频标题</h2>
+      <input type="text" id="titleInput" class="ring ring-red-500 my-2" />
+
+      <div class="flex flex-wrap justify-between items-center mt-4">
+        <div>
+          <!-- 右上角动态预览 -->
+          <p>b站 动态右上角预览</p>
+          <div
+            class="title-area title-area-wrapper bilibili-news-video-title"
+            id="titlePreview"
+          ></div>
+        </div>
+
+        <div>
+          <p>b站 up主的视频主页</p>
+          <!-- 191.5 x 36 -->
+          <div
+            class="title-area title-area-wrapper bilibili-upper-video-title"
+            id="titleUperPreview"
+          ></div>
+        </div>
+
+        <div>
+          <p>b站 首页推荐视频</p>
+          <div
+            class="title-area title-area-wrapper bilibili-recommend-video-title"
+            id="titleRecommendPreview"
+          ></div>
+        </div>
+
+        <div class="xhs-author-page-video">
+          <p>小红书 作者页面视频</p>
+          <a data-v-a264b01a="" target="_self" class="title title-area-wrapper"
+            ><span
+              data-v-51ec0135=""
+              data-v-a264b01a=""
+              class="title-area"
+            ></span>
+          </a>
+        </div>
+        <div class="xhs-index-page-video">
+          <p>小红书 首页推荐视频</p>
+          <a data-v-a264b01a="" target="_self" class="title title-area-wrapper"
+            ><span
+              data-v-51ec0135=""
+              data-v-a264b01a=""
+              class="title-area"
+            ></span>
+          </a>
+        </div>
+      </div>
     </main>
 
     <script>

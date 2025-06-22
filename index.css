@@ -1,13 +1,9 @@
-* {
+/* * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}
+} */
 
-body {
-  /* background-color: #2b2b2b;
-  color: #fff; */
-}
 input {
   line-height: 2em;
   margin: 20px 0;
@@ -18,10 +14,14 @@ main {
   width: 80%;
   margin: 0 auto;
 }
+
+.title-area-wrapper {
+  outline: solid 1px red;
+}
+
 .bilibili-news-video-title {
   width: 200px;
   min-height: 60px;
-  outline: solid 1px red;
   background-color: #fff;
 
   font-size: 14px;
@@ -35,7 +35,6 @@ main {
 }
 
 .bilibili-upper-video-title {
-  outline: solid 1px red;
   box-sizing: border-box;
   color: rgb(24, 25, 28);
   display: -webkit-box;
@@ -61,7 +60,6 @@ main {
 }
 
 .bilibili-recommend-video-title {
-  outline: solid 1px red;
   align-items: flex-start;
   box-sizing: border-box;
   color: rgb(24, 25, 28);
@@ -95,4 +93,43 @@ main {
   word-break: break-word;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
+}
+
+.xhs-author-page-video a {
+  width: 203.36px;
+
+  margin-bottom: 8px;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 140%;
+}
+.xhs-author-page-video a span {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 140%;
+  word-break: break-all;
+}
+.xhs-index-page-video a {
+  width: 204px;
+
+  margin-bottom: 8px;
+  word-break: break-all;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 140%;
+}
+.xhs-index-page-video a span {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 140%;
+  word-break: break-all;
 }
