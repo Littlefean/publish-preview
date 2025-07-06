@@ -80,12 +80,12 @@
     </main>
 
     <script>
-      const input = document.getElementById("titleInput");
+      const titleInput = document.getElementById("titleInput");
       const titleAreas = document.querySelectorAll(".title-area");
 
-      input.addEventListener("input", function () {
+      titleInput.addEventListener("input", function () {
         titleAreas.forEach((element) => {
-          element.textContent = input.value;
+          element.textContent = titleInput.value;
         });
       });
 
