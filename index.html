@@ -14,6 +14,13 @@
     <main class="">
       <h2 class="text-3xl font-bold my-4">输入视频标题</h2>
       <input type="text" id="titleInput" class="ring ring-red-500 my-2" />
+      
+      <!-- 新增微信视频号预览 -->
+      <div class="mt-6">
+        <p>微信视频号短标题 (≤16字符)</p>
+        <div class="title-area title-area-wrapper wechat-video-title" id="wechatTitlePreview"></div>
+        <p class="text-sm text-gray-500" id="wechatCharCount">0/16</p>
+      </div>
 
       <div class="flex flex-wrap justify-between items-center mt-4">
         <div>
@@ -23,6 +30,21 @@
             class="title-area title-area-wrapper bilibili-news-video-title"
             id="titlePreview"
           ></div>
+        </div>
+        
+        <!-- 小红书警告提示 -->
+        <div class="relative">
+          <p>小红书 作者页面视频</p>
+          <a data-v-a264b01a="" target="_self" class="title title-area-wrapper"
+            ><span
+              data-v-51ec0135=""
+              data-v-a264b01a=""
+              class="title-area"
+              id="xhsTitlePreview"
+            ></span>
+          </a>
+          <p class="text-sm text-red-500 hidden" id="xhsWarning">标题超过20字符限制！</p>
+          <p class="text-sm text-gray-500" id="xhsCharCount">0/20</p>
         </div>
 
         <div>
@@ -82,11 +104,47 @@
     <script>
       const titleInput = document.getElementById("titleInput");
       const titleAreas = document.querySelectorAll(".title-area");
+      const wechatTitlePreview = document.getElementById("wechatTitlePreview");
+      const wechatCharCount = document.getElementById("wechatCharCount");
+      const xhsTitlePreview = document.getElementById("xhsTitlePreview");
+      const xhsWarning = document.getElementById("xhsWarning");
+      const xhsCharCount = document.getElementById("xhsCharCount");
 
       titleInput.addEventListener("input", function () {
+        const value = titleInput.value;
+        
+        // 更新所有标题预览
         titleAreas.forEach((element) => {
-          element.textContent = titleInput.value;
+          element.textContent = value;
         });
+        
+        // 微信视频号字符计数
+        wechatTitlePreview.textContent = value;
+        const wechatCount = value.length;
+        wechatCharCount.textContent = `${wechatCount}/16`;
+        if (wechatCount > 16) {
+          wechatCharCount.classList.add('text-red-500');
+          wechatCharCount.classList.remove('text-green-500');
+        } else {
+          wechatCharCount.classList.remove('text-red-500');
+          wechatCharCount.classList.add('text-green-500');
+        }
+        
+        // 小红书字符计数（英文/标点算0.5）
+        let xhsCount = 0;
+        for (let char of value) {
+          xhsCount += /[a-zA-Z0-9\s\.,;:\?!'"\(\)\[\]\{\}]/.test(char) ? 0.5 : 1;
+        }
+        xhsCharCount.textContent = `${Math.round(xhsCount * 10) / 10}/20`;
+        if (xhsCount > 20) {
+          xhsWarning.classList.remove('hidden');
+          xhsCharCount.classList.add('text-red-500');
+          xhsCharCount.classList.remove('text-green-500');
+        } else {
+          xhsWarning.classList.add('hidden');
+          xhsCharCount.classList.remove('text-red-500');
+          xhsCharCount.classList.add('text-green-500');
+        }
       });
 
       const detailsInput = document.getElementById("detailsInput");
