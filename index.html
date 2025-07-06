@@ -23,11 +23,16 @@
         <p class="text-sm text-red-500 hidden" id="douyinWarning">标题超过30字符限制！</p>
       </div>
       
-      <!-- 新增微信视频号预览 -->
-      <div class="mt-6">
-        <p>微信视频号短标题 (≤16字符)</p>
-        <div class="title-area title-area-wrapper wechat-video-title" id="wechatTitlePreview"></div>
-        <p class="text-sm text-green-500" id="wechatCharCount">0/16</p>
+      <!-- 修改为独立微信短标题输入框 -->
+      <div class="flex items-center mt-6 gap-4">
+        <div class="flex-1">
+          <p>微信视频号短标题 (≤16字符)</p>
+          <input type="text" id="wechatInput" class="ring ring-red-500 my-2 w-full" />
+          <p class="text-sm text-green-500" id="wechatCharCount">0/16</p>
+        </div>
+        <div class="flex-1">
+          <div class="title-area title-area-wrapper wechat-video-title" id="wechatTitlePreview"></div>
+        </div>
       </div>
 
       <div class="flex flex-wrap justify-between items-center mt-4">
@@ -121,17 +126,12 @@
       const douyinCharCount = document.getElementById("douyinCharCount");
       const douyinWarning = document.getElementById("douyinWarning");
 
-      titleInput.addEventListener("input", function () {
-        const value = titleInput.value;
-        
-        // 更新所有标题预览
-        titleAreas.forEach((element) => {
-          element.textContent = value;
-        });
-        
-        // 微信视频号字符计数
-        wechatTitlePreview.textContent = value;
-        const wechatCount = value.length;
+      // 微信短标题独立监听
+      const wechatInput = document.getElementById("wechatInput");
+      wechatInput.addEventListener("input", function() {
+        const wechatValue = wechatInput.value;
+        wechatTitlePreview.textContent = wechatValue;
+        const wechatCount = wechatValue.length;
         wechatCharCount.textContent = `${wechatCount}/16`;
         if (wechatCount > 16) {
           wechatCharCount.classList.add('text-red-500');
@@ -140,6 +140,15 @@
           wechatCharCount.classList.remove('text-red-500');
           wechatCharCount.classList.add('text-green-500');
         }
+      });
+
+      titleInput.addEventListener("input", function () {
+        const value = titleInput.value;
+        
+        // 更新所有标题预览
+        titleAreas.forEach((element) => {
+          element.textContent = value;
+        });
         
         // 小红书字符计数（英文/标点算0.5）
         let xhsCount = 0;
